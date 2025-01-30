@@ -8,6 +8,12 @@ const port=process.env.PORT
 const MONGO_URI=process.env.MONGO_URI;
 app.use(cors());
 app.use(express.json());
+
+
+
+
+
+
 mongoose.connect(MONGO_URI).then(()=>{
     console.log("Database connected");
     app.listen(port,()=>{
@@ -15,4 +21,13 @@ mongoose.connect(MONGO_URI).then(()=>{
     });
 }).catch((err)=>{
     console.log(err);
+})
+
+
+
+app.use((Error,req,res,next)=>{
+    const {statusCode,message}=Error;
+    return res.status(statusCode).json({
+        message:message
+    })
 })
