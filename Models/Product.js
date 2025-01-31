@@ -1,4 +1,4 @@
-const {Schema,SchemaTypes} =require('mongoose');
+const {Schema,SchemaTypes,mongoose} =require('mongoose');
 const ProductSchema=new Schema({
     name:{  // name of the product
         type:String,
@@ -12,10 +12,10 @@ const ProductSchema=new Schema({
         type:String,
         required:true
     },
-    imageUrl:[{
+    imageUrl:{
         type:String,
         required:true// image urls of the product
-    }],
+    },
     quantity:{  // quantity of the product
         type:Number,
         required:true,

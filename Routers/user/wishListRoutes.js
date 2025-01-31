@@ -6,4 +6,5 @@ router.get('/:id', wishlistController.getWishlistById);
 router.post('/', wishlistController.addWishlist);
 router.put('/:id', wishlistController.updateWishlist);
 router.delete('/:id', wishlistController.deleteWishlist);
+
 module.exports = router;
