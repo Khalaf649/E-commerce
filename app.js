@@ -8,6 +8,9 @@ const port=process.env.PORT
 const MONGO_URI=process.env.MONGO_URI;
 app.use(cors());
 app.use(express.json());
+const ErrorHandler=require('./Middlewares/errorHandler.js')
+
+
 
 const adminProductRouter=require('./Routers/admin/adminProductRoutes')
 const adminCartRouter=require('./Routers/admin/adminCartRoutes')
@@ -52,9 +55,4 @@ mongoose.connect(MONGO_URI).then(()=>{
 
 
 
-app.use((Error,req,res,next)=>{
-    const {statusCode,message}=Error;
-    return res.status(statusCode).json({
-        message:message
-    })
-})
+app.use(ErrorHandler);
