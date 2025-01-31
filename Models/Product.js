@@ -12,10 +12,10 @@ const ProductSchema=new Schema({
         type:String,
         required:true
     },
-    imageUrl:{
+    imageUrl:[{
         type:String,
         required:true// image urls of the product
-    },
+    }],
     quantity:{  // quantity of the product
         type:Number,
         required:true,
