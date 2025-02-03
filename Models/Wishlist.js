@@ -17,6 +17,10 @@ const WishlistSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,  // Timestamp for wishlist creation
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,  // Timestamp for wishlist update
     }
 });
 

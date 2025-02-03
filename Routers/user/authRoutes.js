@@ -1,8 +1,9 @@
 const express = require('express');
 const authController = require('../../Controllers/user/authController');
 const { model } = require('mongoose');
+const UserValidator = require('../../Validation/userValidation');
 const router = express.Router();
-router.post('/register', authController.register);
+router.post('/register',UserValidator,authController.register);
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 router.get('/me', authController.getMe);

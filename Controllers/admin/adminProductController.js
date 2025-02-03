@@ -2,6 +2,7 @@ const express = require('express');
 const Product = require('../../Models/Product');
 const upload = require('../../config/multer');
 const imageAws = require('../../Utils/imageAWS')
+const {validationResult}=require('express-validator');
 exports.getAllProducts = async (req, res, next) => {
     try {
         const products = await Product.find();
@@ -39,6 +40,12 @@ exports.getProductById = async (req, res, next) => {
 }
 exports.addProduct = async (req, res, next) => {
     // Handle the upload first
+    const validationErrors = validationResult(req);
+    if (!validationErrors.isEmpty()) {
+        const error = new Error(validationErrors.array()[0].msg);
+        error.statusCode = 422;
+        return next(error);
+    }
     upload(req, res, async (err) => {
         if (err) {
             // Handle multer errors

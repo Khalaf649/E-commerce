@@ -16,6 +16,18 @@ const UserSchema=new Schema({
         type:Boolean,
         required:true,
         default:false
+    },
+    cartID:{  // cart id of the user
+        type:SchemaTypes.ObjectId,
+        ref:'cart'
+    },
+    ordersID:[{  // orders of the user
+        type:SchemaTypes.ObjectId,
+        ref:'order'
+    }],
+    wishlistID:{  // wishlist of the user
+        type:SchemaTypes.ObjectId,
+        ref:'wishlist'
     }
 })  // create a schema
 module.exports=User=mongoose.model('user',UserSchema);  // create a model and export it

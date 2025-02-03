@@ -26,7 +26,7 @@ app.use('/admin/products',adminProductRouter);   // use the product router
 // app.use('/admin/wishlists',adminWishlistRouter);    // use the wishlist router
 
 
-// const authRouter=require('./Routers/user/authRoutes.js')
+ const authRouter=require('./Routers/user/authRoutes.js')
 // const cartRouter=require('./Routers/user/cartRoutes.js')
 // const orderRouter=require('./Routers/user/orderRoutes.js')
 // const productRouter=require('./Routers/user/productRoutes.js')
