@@ -34,7 +34,7 @@ app.use('/admin/products',adminProductRouter);   // use the product router
 // const wishlistRouter=require('./Routers/user/wishListRoutes.js')
 
 
-// app.use('/auth',authRouter);   // use the auth router
+ app.use('/auth',authRouter);   // use the auth router
 // app.use('/carts',cartRouter);    // use the cart router
 // app.use('/orders',orderRouter);    // use the order router
 // app.use('/products',productRouter);    // use the product router
