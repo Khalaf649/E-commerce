@@ -67,30 +67,43 @@ Make sure you have the following installed:
 |--------|----------------|-------------------|
 | POST   | `/api/auth/register` | User Registration |
 | POST   | `/api/auth/login` | User Login |
+| GET    | `/api/auth/logout` | User Logout |
+| GET    | `/api/auth/me` | Get User Profile |
+| PUT    | `/api/auth/updatepassword` | Change Password |
+| PUT    | `/api/auth/updateuser` | Update User Information |
+| DELETE | `/api/auth/deleteuser` | Delete User Account |
 
 ### User Actions
 | Method | Endpoint          | Description               |
 |--------|------------------|--------------------------|
 | GET    | `/api/products`  | View all products        |
-| POST   | `/api/cart`      | Add product to cart      |
 | GET    | `/api/cart`      | View cart items         |
-| POST   | `/api/wishlist`  | Add product to wishlist |
+| POST   | `/api/cart`      | Add product to cart      |
+| PUT    | `/api/cart/:id`  | Update cart item        |
+| DELETE | `/api/cart/:id`  | Remove item from cart   |
 | GET    | `/api/wishlist`  | View wishlist           |
+| GET    | `/api/wishlist/:id` | Get wishlist by ID |
+| POST   | `/api/wishlist`  | Add product to wishlist |
+| PUT    | `/api/wishlist/:id` | Update wishlist item |
+| DELETE | `/api/wishlist/:id` | Remove item from wishlist |
 | POST   | `/api/orders`    | Place an order          |
 | GET    | `/api/orders`    | View order history      |
-| PUT    | `/api/users/update` | Update user information |
-| PUT    | `/api/users/password` | Change password        |
 
 ### Admin Actions
 | Method | Endpoint          | Description            |
 |--------|------------------|-----------------------|
-| GET    | `/api/users`     | Get all users        |
-| DELETE | `/api/users/:id` | Delete a user        |
-| POST   | `/api/products`  | Add a new product    |
-| PUT    | `/api/products/:id` | Update a product  |
-| DELETE | `/api/products/:id` | Delete a product  |
-| GET    | `/api/orders`    | Get all orders      |
-| PUT    | `/api/orders/:id` | Update order status |
+| GET    | `/api/admin/users`     | Get all users        |
+| DELETE | `/api/admin/users/:id` | Delete a user        |
+| POST   | `/api/admin/products`  | Add a new product    |
+| PUT    | `/api/admin/products/:id` | Update a product  |
+| DELETE | `/api/admin/products/:id` | Delete a product  |
+| GET    | `/api/admin/orders`    | Get all orders      |
+| PUT    | `/api/admin/orders/:id` | Update order status |
+| GET    | `/api/admin/carts`    | Get all carts      |
+| GET    | `/api/admin/carts/:id` | Get cart by ID      |
+| POST   | `/api/admin/carts`  | Add a cart    |
+| PUT    | `/api/admin/carts/:id` | Update a cart  |
+| DELETE | `/api/admin/carts/:id` | Delete a cart  |
 
 ## Deployment
 You can deploy this API using platforms like:
@@ -103,7 +116,7 @@ You can deploy this API using platforms like:
 This project is licensed under the MIT License.
 
 ## Author
-- [**Your Name**](https://www.linkedin.com/in/abdelrahman-khalaf-243a782b7/) (Your GitHub/LinkedIn Profile)
+- **Abdelrahman Reda** ((https://www.linkedin.com/in/abdelrahman-khalaf-243a782b7/))
 
 ---
 
