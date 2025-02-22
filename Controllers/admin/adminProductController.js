@@ -2,6 +2,7 @@ const express = require('express');
 const Product = require('../../Models/Product');
 const upload = require('../../config/multer');
 const imageAws = require('../../Utils/imageAWS')
+const ITEM_PER_PAGE=10;
 const {validationResult}=require('express-validator');
 exports.getAllProducts = async (req, res, next) => {
     try {
@@ -39,12 +40,17 @@ exports.getProductById = async (req, res, next) => {
     }
 }
 exports.addProduct = async (req, res, next) => {
+    console.log(req.body.name, req.body.price, req.body.description, req.body.quantity);
     // Handle the upload first
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
+    
         const error = new Error(validationErrors.array()[0].msg);
         error.statusCode = 422;
+
+        //console.log(error);
         return next(error);
+        
     }
     upload(req, res, async (err) => {
         if (err) {
@@ -72,7 +78,6 @@ exports.addProduct = async (req, res, next) => {
                 fixedPart, // Unique filename with timestamp
                 req.file.mimetype
             );
-            console.log(s3Data);
             // Create the product object
             const product = new Product({
                 quantity,

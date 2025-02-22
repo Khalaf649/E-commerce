@@ -1,9 +1,19 @@
-const expressValidator = require('express-validator');
 const { body } = require('express-validator');
+
 module.exports = [
-    body('name').isLength({ min: 3 }).withMessage('Name must be at least 3 characters long'),
-    body('price').isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
-    body('description').isLength({ min: 10 }).withMessage('Description must be at least 10 characters long'),
-    body('imageUrl').isURL().withMessage('Image URL must be a valid URL'),
-    body('quantity').isInt({ gt: 0 }).withMessage('Quantity must be a positive integer')
-]
+    body('name')
+        .notEmpty().withMessage('Name is required')
+        .isLength({ min: 3, max: 20 }).withMessage('Name must be between 3 and 20 characters long'),
+
+    body('price')
+        .notEmpty().withMessage('Price is required')
+        .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+
+    body('description')
+        .trim()
+        .notEmpty().withMessage('Description is required')
+        .isLength({ min: 10 }).withMessage('Description must be at least 10 characters long'),
+    body('quantity')
+        .notEmpty().withMessage('Quantity is required')
+        .isInt({ gt: 0 }).withMessage('Quantity must be a positive integer')
+];

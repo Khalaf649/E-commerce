@@ -51,7 +51,24 @@ exports.login = async (req, res) => {
     }
 }
 exports.logout = async (req, res) => {
-    res.status(200).json({ success: true, message: 'User logged out' });
+    const token = req.header("Authorization")?.split(" ")[1]; // Extract token from header
+
+    if (!token) {
+        return res.status(400).json({ message: "No token provided" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+        // Store the token in Redis with an expiration time (same as token expiry)
+        await redis.set(token, "blacklisted", "EX", decoded.exp - Math.floor(Date.now() / 1000));
+
+        return res.json({ message: "Logged out successfully!" });
+    } catch (error) {
+        return res.status(400).json({ message: "Invalid token" });
+    }
+
+
 }
 exports.getMe = async (req, res) => {
     try {
@@ -101,3 +118,4 @@ exports.deleteUser = async (req, res) => {
         res.status(400).json({ success: false, error: error.message });
     }
 }
+

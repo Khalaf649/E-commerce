@@ -21,5 +21,5 @@ module.exports.addCartValidation = [
         })
         .withMessage('Invalid product data'),
 
-    // Optional: you can add additional checks here, for example, checking product IDs in the database.
+    
 ];
